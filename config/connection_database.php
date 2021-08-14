@@ -17,25 +17,13 @@
         }
 
 
-        public function getmyDB()
-        {
+        public function getmyDB(){
         if ($this->conn instanceof PDO)
             {
             return $this->conn;
             }
         }
         
-        // public function getConnection(){
-        //         $this->conn = null;
-        //         try {
-        //             $this->conn = new PDO('mysql:host='.$this->host.";dbname=".$this->database_name,$this->username, $this->password);
-        //                 $this->conn->exec('set names utf8');
-        //         } catch (PDOException $e) {
-        //             echo 'No es posible connectare a la base de datos '. $e->getMessage();
-
-        //         }
-        //             return $this->conn;
-        // }
 
         
     }

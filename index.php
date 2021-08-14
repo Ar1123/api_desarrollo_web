@@ -5,31 +5,47 @@
         include_once 'api/api_bebidas/api_bebidas.php';
 
 
-        $url_actual = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
         
         header('Content-Type: application/json'); 
         
-        $ruta_1 = 'http://localhost/Api_desarrollo_web/Categorias';
-        $ruta_2 = 'http://localhost/Api_desarrollo_web/bebidas';
+        $raiz = 'http://localhost/Api_desarrollo_web/';
 
-            $bebida = new ApiBebidas;
+        $bebida = new ApiBebidas;
+        $ruta = $_GET['url'] ?? null;
+        if($ruta!=null){
+            $ruta  =$_GET['url'] ;
+        }else{
+            $ruta = $raiz;
+        }
+        
+        
+        
+        switch($ruta){
+            case 'categorias':
 
-        switch($url_actual){
-            case $ruta_1 || $ruta_1.'.php':
-
-                $bebida->getQuety('');
-                
                 break;
-            case $ruta_2 || $ruta_2.'.php':
-                echo "333";
+            case 'bebidas':
+                $bebida->getQuety('');
+                break;
+            case $raiz:
+                echo json_encode(
+                    array(
+                       'ok'=>true,
+                       'msg'=>'Ruta Raiz',
+                       'statusCode'=>200,
+                       'body'=>[
+                           'Andrés Ruiz',
+                           'Carlos Castro'
+                       ] 
+                    )
+                   );
                 break;
             default:
-            echo    json_encode(
+            echo json_encode(
                  array(
                     'ok'=>false,
                     'msg'=>'Ruta No encontrada',
                     'statusCode'=>404,
-                    'body'=>[] 
                  )
                 );
             break;  

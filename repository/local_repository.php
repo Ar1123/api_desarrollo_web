@@ -1,18 +1,16 @@
-
 <?php
 
 include_once 'config/connection_database.php';
 class LocalRepository{
     
-
-        private $conn;
-
-        public function __construct()
-        {
+    private $conn;
+    
+    public function __construct(){
             $this->conn = new DataBaseConnection();
             $this->conn =  $this->conn->getmyDB();
         }
-        public function getAll($query){
+    
+    public function getData($query){
             try {
                 $result = $this->conn->prepare($query);
                 $result->execute();
@@ -23,9 +21,9 @@ class LocalRepository{
                 die();
             }
         }       
-    
-        
-     public function create($query){// TODO: Manejar error para el unique
+
+    // TODO: Manejar error para el constraint unique
+     public function create($query){
         try {
         $result = $this->conn->prepare($query);
        if ($result->execute()){
@@ -38,6 +36,23 @@ class LocalRepository{
             die();
         }
      }       
+            
+    public function update($query)
+    {
+            try {
+
+                $result = $this->conn->prepare($query);
+                if ($result->execute()){
+                 $result->setFetchMode(PDO::FETCH_ASSOC);
+                 return $result->fetchAll();  
+                }
+
+            } catch (PDOExecption $e) {
+                print ('Error'.$e->getMessage());
+                die();
+            }
     }
+    }
+
 
 ?>
