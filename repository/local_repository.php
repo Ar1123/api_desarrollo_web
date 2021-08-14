@@ -23,6 +23,21 @@ class LocalRepository{
                 die();
             }
         }       
+    
+        
+     public function create($query){// TODO: Manejar error para el unique
+        try {
+        $result = $this->conn->prepare($query);
+       if ($result->execute()){
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        return $result->fetchAll();    
+        }
+        return false;
+        } catch (PDOExecption $e) {
+            print ('Error'.$e->getMessage());
+            die();
+        }
+     }       
     }
 
 ?>
