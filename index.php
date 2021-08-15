@@ -25,7 +25,7 @@
                 echo 'sss';
                 break;
             case 'bebidas':
-                $bebida->getQuety('');
+                $bebida->getMethod();
                 break;
             case $raiz:
                 echo json_encode(

@@ -17,7 +17,7 @@
             $this->querys = new Querys();
         }
 
-        public function getQuety($types){
+        public function getMethod(){
 
             switch( $_SERVER['REQUEST_METHOD']){
 
@@ -39,63 +39,45 @@
 
         private  function getBebida(){
            
-           
+            $result;
             if(isset($_GET['id'])){
                 $id = $_GET['id'];
-
                 $query = $this->querys->querysBebidas('GET/id');
-
                 $result  =    $this->repository->getDataById($query, $id);
-                $this->response->response(
-                    true,
-                    'Consula exitosa',
-                     200,
-                     $result);
-
-
+                
             }else{
-                $query = $this->querys->querysBebidas('GET');
-
-                $result  =    $this->repository->getAllData($query);
-                $this->response->response(
-                           true,
-                           'Consula exitosa',
-                            200,
-                            $result);
+               
+            $query   = $this->querys->querysBebidas('GET');
+            $result  =    $this->repository->getAllData($query);
             }
+            $this->message($result);
         }
 
+        public function message($result){
+                if($result){
+                   
+                    $this->response-> status_200('consulta exitosa', $result);
+             
+                }else{
+                  
+                    $this->response-> status_200('No hay informaccion para este usuario', $result);
+                }
+        }
+
+        
         private function createBebida(){
             $postBody = file_get_contents('php://input');
             $data = (array) json_decode($postBody,true);
-                if(
-                !isset($data['cantidad'])     || !isset($data['cod_categoria']) ||
-                !isset($data['descripcion'])  || !isset($data['descuento'])     ||
-                !isset($data['grado_acohol']) || !isset($data['marca'])         ||
-                !isset($data['nombre_bebida'])       || !isset($data['puntuacion'])    ||
-                !isset($data['url']) ){
-                    $this->response->response(
-                        false,
-                        'Faltan datos',
-                         400,
-                         []);
-                }else{
+               
+            
+            if($this->validator($data) ){
 
-                    $query = $this->querys->querysBebidas('POST');
+                $query = $this->querys->querysBebidas('POST');
+                $result  =  $this->repository->create($data, $query);
 
-                   $result  =  $this->repository->create($data, $query);
-
-                    if($result){
-
-                        echo json_encode(
-                            array(
-                                'ok'            =>  true,
-                                'statusCode'    =>  201,
-                                'msg'           =>  'Datos creados con exito'
-                            )
-                        );
-
-                        }
+                 if($result){
+                    $this->response-> status_201();               
+                }
 
         }
 
@@ -108,18 +90,7 @@
             $id = $_GET['id'];
 
 
-            if(
-                !isset($data['cantidad'])     || !isset($data['cod_categoria']) ||
-                !isset($data['descripcion'])  || !isset($data['descuento'])     ||
-                !isset($data['grado_acohol']) || !isset($data['marca'])         ||
-                !isset($data['nombre_bebida'])       || !isset($data['puntuacion'])    ||
-                !isset($data['url'])  || !isset($data['volumen'])){
-                    $this->response->response(
-                        false,
-                        'Faltan datos',
-                         400,
-                         []);
-                }else{
+           if($this->validator($data) ){
 
                     $query = $this->querys->querysBebidas('PUT');
                     $result  =  $this->repository->update($data, $id,$query);
@@ -136,6 +107,20 @@
 
 
         }
+
+        private function validator($data){
+
+            if(
+                !isset($data['cantidad'])     || !isset($data['cod_categoria']) ||
+                !isset($data['descripcion'])  || !isset($data['descuento'])     ||
+                !isset($data['grado_acohol']) || !isset($data['marca'])         ||
+                !isset($data['nombre_bebida'])       || !isset($data['puntuacion'])    ||
+                !isset($data['url']) ){
+                    $this->response-> status_400();               
+             
+        }
+        return true;
+    }
 
     }
 

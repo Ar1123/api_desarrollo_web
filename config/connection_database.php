@@ -12,9 +12,7 @@ define("DB_PASSWORD", "");
 
         public function __construct(){
                 try {
-                    $this->conn = new PDO('mysql:host='.DB_HOST.";dbname=".DB_DATABASE,DB_USER, DB_PASSWORD);
-                    // self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-                    
+                    $this->conn = new PDO('mysql:host='.DB_HOST.";dbname=".DB_DATABASE,DB_USER, DB_PASSWORD);                    
                 } catch (PDOException $e) {
                     echo 'No es posible connectare a la base de datos '. $e->getMessage();
                     die();
