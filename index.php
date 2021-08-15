@@ -2,7 +2,7 @@
 
 
 
-        include_once 'api/api_bebidas/api_bebidas.php';
+        include_once 'controller/controller_bebidas.php';
 
 
         
@@ -10,7 +10,7 @@
         
         $raiz = 'http://localhost/Api_desarrollo_web/';
 
-        $bebida = new ApiBebidas;
+        $bebida = new ControllerBebidas;
         $ruta = $_GET['url'] ?? null;
         if($ruta!=null){
             $ruta  =$_GET['url'] ;
@@ -22,7 +22,7 @@
         
         switch($ruta){
             case 'categorias':
-
+                echo 'sss';
                 break;
             case 'bebidas':
                 $bebida->getQuety('');
