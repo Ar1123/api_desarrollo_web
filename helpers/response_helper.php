@@ -8,24 +8,24 @@
 
 
 
-        public function status_200($msg, $result)
+        public function status_200($msg, $result =[])
         {
                 echo json_encode(
                     array(
                         'ok'=>true,
                         'statusCode'=>200,
                         'msg'=>$msg,
-                         'body' =>$result
+                         'body' =>$result 
                     )
                 );
         }
-        public function status_201()
+        public function status_201($d)
         {
             echo json_encode(
                 array(
                     'ok'            =>  true,
                     'statusCode'    =>  201,
-                    'msg'           =>  'Datos creados con exito'
+                    'msg'           =>  'Datos '.$d.' con exito'
                 )
             ) ;    
         }
