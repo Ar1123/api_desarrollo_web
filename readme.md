@@ -26,11 +26,11 @@
         }  
  # Endpoint categoria
 
- - GET     http://localhost/Api_desarrollo_web/categoria       // Obtiene todas la bebidas
- - GET     http://localhost/Api_desarrollo_web/categoria?id=12 //Obtiene la bebidas por id
- - POST    http://localhost/Api_desarrollo_web/categoria       //Inserta una nueva bebida 
- - PUT     http://localhost/Api_desarrollo_web/categoria?id=12 //Actualizar datos
- - DELETE  http://localhost/Api_desarrollo_web/categoria?id=12 //Eliminar datos
+ - GET     http://localhost/Api_desarrollo_web/categorias       // Obtiene todas la bebidas
+ - GET     http://localhost/Api_desarrollo_web/categorias?id=12 //Obtiene la bebidas por id
+ - POST    http://localhost/Api_desarrollo_web/categorias       //Inserta una nueva bebida 
+ - PUT     http://localhost/Api_desarrollo_web/categorias?id=12 //Actualizar datos
+ - DELETE  http://localhost/Api_desarrollo_web/categorias?id=12 //Eliminar datos
  
 
 
