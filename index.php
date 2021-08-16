@@ -8,7 +8,11 @@
 
 
         
-        header('Content-Type: application/json'); 
+        header('Acess-Control-Allow-Origin: *');
+        header('Content-Type: application/json; charset=UTF-8');
+        header('Acces-Control-Allow-Methods: OPTIONS, GET, POST, PUT, DELETE');
+        header('Access-Control-Max-age:3600');
+        header('Acess-Control-Allow-Headers:Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $uri = explode('/', $uri);
         
