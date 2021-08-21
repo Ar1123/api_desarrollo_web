@@ -65,7 +65,7 @@
             
             
             if($this->validator($data) ){
-
+;
                 $result  =  $this->bebidaCrudImpl->create($data);
 
                 if($result){
@@ -120,7 +120,7 @@
                 !isset($data['descripcion'])  || !isset($data['descuento'])     ||
                 !isset($data['grado_acohol']) || !isset($data['marca'])         ||
                 !isset($data['nombre_bebida'])       || !isset($data['puntuacion'])    ||
-                !isset($data['url']) ){
+                !isset($data['url']) || !isset($data['precio']) ){
                   return   $this->response-> status_400();               
             
         }

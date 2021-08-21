@@ -19,8 +19,8 @@
         public function create($body){
             try{
 
-                $query = 'INSERT INTO bebida (cod_categoria, cantidad, descripcion, nombre_bebida, volumen, marca, descuento, url, puntuacion,grado_acohol) 
-                VALUES(:cod_categoria, :cantidad, :descripcion, :nombre_bebida, :volumen, :marca, :descuento, :url, :puntuacion,:grado_acohol)';
+                $query = 'INSERT INTO bebida (cod_categoria, cantidad, descripcion, nombre_bebida, volumen, marca, descuento, url, puntuacion,grado_acohol, precio) 
+                VALUES(:cod_categoria, :cantidad, :descripcion, :nombre_bebida, :volumen, :marca, :descuento, :url, :puntuacion,:grado_acohol,:precio)';
                 $stmt = $this->conn->prepare($query);
     
                 foreach ($body as $key => $value) {
@@ -70,7 +70,7 @@
             cod_categoria = :cod_categoria, cantidad  = :cantidad, 
             descripcion  = :descripcion, nombre_bebida = :nombre_bebida, 
             volumen = :volumen, marca = :marca, descuento = :descuento, 
-            url = :url, puntuacion = :puntuacion,grado_acohol = :grado_acohol WHERE id_bebida = :id';
+            url = :url, puntuacion = :puntuacion,grado_acohol = :grado_acohol, precio = :precio WHERE id_bebida = :id';
 
             try {
                 $stmt = $this->conn->prepare($query);

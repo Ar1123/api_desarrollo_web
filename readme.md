@@ -1,6 +1,19 @@
 # Nota
     Este API posee el CRUD para la sección de las bebidas y sus respectivas categorias
 
+
+# Cambios requeridos
+ - dirigirse a la carperta config  `config\connection_database.php` y realizar los siguientes cambios
+      ```php
+        define("DB_HOST", "your host");
+        define("DB_DATABASE", "your name database");
+        define("DB_USER", "yor user");
+        define("DB_PASSWORD", "");
+      
+      ```
+
+     - alojar en la carpete `htdocs` de xampp  
+
  # Endpoint bebida
  
  - GET     http://localhost/Api_desarrollo_web/bebidas       // Obtiene todas la bebidas
@@ -12,7 +25,9 @@
 
 
       // body para el post y el put
-    - body: {
+    - body: 
+    ```json
+    {
                         "cantidad":10,
                         "cod_categoria":1,    
                         "descripcion":" es una bebida",
@@ -22,8 +37,12 @@
                         "nombre_bebida":"bebida", 
                         "puntuacion":10,
                         "url":"uri",
-                        "volumen":10
+                        "volumen":10,
+                        "precio": 1000
         }  
+    
+    ```
+        
  # Endpoint categoria
 
  - GET     http://localhost/Api_desarrollo_web/categorias       // Obtiene todas la bebidas
@@ -35,11 +54,14 @@
 
 
       // body para el post y el put
-    - body: {
+    - body: 
+    
+    ```json
+    {
                 "nombre_categoria":"nombre"
     
             } 
-
+    ```
 # explicación de carpetas
   
   - CONFIG
