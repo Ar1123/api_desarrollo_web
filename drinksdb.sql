@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2021 a las 18:52:00
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 8.0.8
+-- Tiempo de generación: 24-08-2021 a las 04:03:48
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bebidad_proyecto_desarrollo_web`
+-- Base de datos: `drinksdb`
 --
 
 -- --------------------------------------------------------
@@ -47,7 +47,9 @@ CREATE TABLE `bebida` (
 --
 
 INSERT INTO `bebida` (`id_bebida`, `cod_categoria`, `cantidad`, `descripcion`, `nombre_bebida`, `volumen`, `marca`, `descuento`, `url`, `puntuacion`, `grado_acohol`, `precio`) VALUES
-(3, 5, 10, ' es una bebidaaas', 'bebida', 10, 'es una marca', 10, 'uri', 10, 50, 1000);
+(5, 11, 20, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus vel corporis qui perspiciatis doloribus, illo perferendis laboriosam velit quo tenetur voluptas nemo ad nesciunt voluptates provident eius quasi neque placeat.Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus vel corporis qui perspiciatis doloribus, illo perferendis laboriosam velit quo tenetur voluptas nemo ad nesciunt voluptates provident eius quasi neque placeat.', 'Hennessy V.S Cognac', 490, 'Hannessy', 0, 'https://products3.imgix.drizly.com/ci-hennessy-vs-cognac-4386a392a6b94b18.jpeg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20', 10, 45, 100),
+(7, 11, 85, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus vel corporis qui perspiciatis doloribus, illo perferendis laboriosam velit quo tenetur voluptas nemo ad nesciunt voluptates provident eius quasi neque placeat.Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus vel corporis qui perspiciatis doloribus, illo perferendis laboriosam velit quo tenetur voluptas nemo ad nesciunt voluptates provident eius quasi neque placeat.', 'Hennessy Black', 500, 'Hennessy', 0, 'https://products3.imgix.drizly.com/ci-hennessy-black-c1449d2b4ec759a3.jpeg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20', 10, 40, 60),
+(8, 13, 10, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus vel corporis qui perspiciatis doloribus, illo perferendis laboriosam velit quo tenetur voluptas nemo ad nesciunt voluptates provident eius quasi neque placeat.\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus vel corporis qui perspiciatis doloribus, illo perferendis laboriosam velit quo tenetur voluptas nemo ad nesciunt voluptates provident eius quasi neque placeat.', 'Camarena Reposado', 500, 'Camarena', 5, 'https://products0.imgix.drizly.com/ci-familia-camarena-reposado-270814a06a872d9d.png?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20', 10, 40, 50);
 
 -- --------------------------------------------------------
 
@@ -65,8 +67,14 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`cod_categoria`, `nombre_categoria`) VALUES
-(5, 'Alcholss'),
-(6, '42');
+(7, 'wine'),
+(8, 'whisky'),
+(9, 'vodka'),
+(10, 'ginebra'),
+(11, 'cognac'),
+(12, 'beer'),
+(13, 'tequilla'),
+(14, 'alcoholfree');
 
 --
 -- Índices para tablas volcadas
@@ -93,13 +101,13 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `bebida`
 --
 ALTER TABLE `bebida`
-  MODIFY `id_bebida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_bebida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `cod_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cod_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas

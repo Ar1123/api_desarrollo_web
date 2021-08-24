@@ -1,7 +1,7 @@
 <?php
 
 define("DB_HOST", "localhost");
-define("DB_DATABASE", "bebidad_proyecto_desarrollo_web");
+define("DB_DATABASE", "drinks");
 define("DB_USER", "root");
 define("DB_PASSWORD", "");
 
